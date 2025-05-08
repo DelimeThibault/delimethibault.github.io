@@ -1,0 +1,341 @@
+/* Define CSS variables for light and dark themes */
+:root {
+    --bg-color: #FFFFFF;
+    --text-color: #2D3748;
+    --accent-color: #6B7280;
+    --border-color: #E5E7EB;
+    --secondary-bg: #F7FAFC;
+    --footer-bg: #F7FAFC;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1A202C;
+    --text-color: #E2E8F0;
+    --accent-color: #9CA3AF;
+    --border-color: #4A5568;
+    --secondary-bg: #2D3748;
+    --footer-bg: #2D3748;
+}
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+[data-theme="dark"] header {
+    background-color: rgba(26, 32, 44, 0.95);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1.2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Section styling */
+section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Headings */
+h1 {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    transform: scale(1.02);
+}
+
+/* Lists */
+ul {
+    list-style: disc;
+    margin-left: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+ul li {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
+
+/* CV section */
+section#cv object {
+    border: 1px solid var(--border-color);
+    display: block;
+    margin: 1rem 0;
+}
+
+/* Portfolio section */
+section#portfolio .theme {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border-left: 3px solid var(--accent-color);
+    transition: background-color 0.3s ease;
+}
+
+section#portfolio .theme:hover {
+    background-color: var(--bg-color);
+}
+
+/* Portfolio summary table */
+section#portfolio .portfolio-summary {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.2rem;
+    background-color: var(--bg-color);
+}
+
+section#portfolio .portfolio-summary th,
+section#portfolio .portfolio-summary td {
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+section#portfolio .portfolio-summary th {
+    background-color: var(--secondary-bg);
+    font-family: 'Lora', serif;
+    font-weight: 500;
+}
+
+section#portfolio .portfolio-summary tr {
+    transition: background-color 0.3s ease;
+}
+
+section#portfolio .portfolio-summary tr:hover {
+    background-color: var(--secondary-bg);
+}
+
+section#portfolio .portfolio-summary tfoot {
+    background-color: var(--footer-bg);
+}
+
+section#portfolio .portfolio-summary tfoot td {
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    padding: 0.8rem;
+    color: var(--accent-color);
+}
+
+/* Contact section */
+section#contact p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin: 0.6rem 0;
+    }
+
+    #theme-toggle {
+        position: absolute;
+        top: 1.2rem;
+        right: 1rem;
+    }
+
+    section {
+        padding: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    section#cv object {
+        height: 400px;
+    }
+
+    section#portfolio .portfolio-summary th,
+    section#portfolio .portfolio-summary td {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    section#cv object {
+        height: 300px;
+    }
+
+    section#portfolio .portfolio-summary {
+        font-size: 0.85rem;
+    }
+}
